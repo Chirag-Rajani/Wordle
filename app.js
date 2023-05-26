@@ -25,7 +25,40 @@ let currentRow = 0
 let currentTile = 0
 let isGameOver = false
 
+let isPressed = false;
 
+document.addEventListener("keydown", (event) => {
+    const key = event.key === "Backspace" ? "«" : event.key.toLocaleUpperCase();
+    const button = document.getElementById(key);
+    button.classList.add("pressed");
+    if (isPressed) {
+        return;
+    } else {
+        isPressed = true;
+    }
+});
+
+document.addEventListener("keyup", (event) => {
+    const key = event.key === "Backspace" ? "«" : event.key.toLocaleUpperCase();
+    const button = document.getElementById(key);
+    button.classList.remove("pressed");
+    console.log(event.key);
+    if (keys.includes(key)) {
+        handleClick(key);
+    }
+    isPressed = false;
+});
+
+
+const addBorderEffect = (key) => {
+    const button = document.getElementById(key);
+    button.classList.add('pressed');
+};
+
+const removeBorderEffect = (key) => {
+    const button = document.getElementById(key);
+    button.classList.remove('pressed');
+};
 
 guessRows.forEach((guessRow, guessRowIndex) => {
     const rowElement = document.createElement('div')

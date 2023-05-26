@@ -81,6 +81,12 @@ body {
     animation: 0.5s linear flipping;
 }
 
+
+.key-container button.pressed {
+    border: 3px solid #ffffff;
+}
+
+
 @keyframes flipping {
     0% {
         transform: rotateX(0deg);
